@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "424381619205",
+    "project_id": "skilltree-6f76c",
+    "storage_bucket": "skilltree-6f76c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424381619205:android:838fffdcc937333456106c",
+        "android_client_info": {
+          "package_name": "com.example.skilltree_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424381619205-05jju0n9ufsr72ut82ob8t67ognq94mh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLWbIP3UCyeCr3w3rGDMEXgfHlfrgZXj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "424381619205-05jju0n9ufsr72ut82ob8t67ognq94mh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "424381619205-07k4vsfuldqp3hic2r65gjq448j0paiu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.skilltreeApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
