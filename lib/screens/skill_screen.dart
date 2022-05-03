@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:skilltree_app/widgets/widgets.dart';
 import 'package:skilltree_app/models/models.dart';
-import 'package:skilltree_app/data/data.dart';
+// import 'package:skilltree_app/data/data.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SkillScreen extends StatefulWidget {
   const SkillScreen({Key? key}) : super(key: key);
@@ -30,8 +32,13 @@ class _SkillScreenState extends State<SkillScreen> {
 
 class _SkillScreenMobile extends StatelessWidget {
   final TrackingScrollController scrollController;
-  const _SkillScreenMobile({Key? key, required this.scrollController})
+  _SkillScreenMobile({Key? key, required this.scrollController})
       : super(key: key);
+
+  final Stream<QuerySnapshot<Map<String, dynamic>>> skillStream =
+      FirebaseFirestore.instance
+          .collection('skill')
+          .snapshots(includeMetadataChanges: false);
 
   @override
   Widget build(BuildContext context) {
@@ -51,14 +58,20 @@ class _SkillScreenMobile extends StatelessWidget {
           centerTitle: true,
           floating: true,
         ),
-        SliverList(
-            delegate: SliverChildBuilderDelegate(
-          (context, index) {
-            final Skill skillItem = skill_list[index];
-            return SkillContainer(skill: skillItem);
-          },
-          childCount: skill_list.length,
-        ))
+        StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+            stream: skillStream,
+            builder: (BuildContext context, snapshot) {
+              // if (snapshot.hasData) {
+              return SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  final Skill skillItem =
+                      Skill.fromJson(snapshot.data!.docs[index].data());
+                  return SkillContainer(skill: skillItem);
+                },
+                childCount: snapshot.hasData ? snapshot.data!.size : 0,
+              ));
+            }),
       ],
     );
   }
