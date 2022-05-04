@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Skill extends StatefulWidget {
   final String skillName;
   final int level;
+  final String category;
   double experience;
   bool isSelected = false;
 
@@ -14,7 +15,8 @@ class Skill extends StatefulWidget {
       {Key? key,
       required this.skillName,
       required this.level,
-      required this.experience})
+      required this.experience,
+      required this.category})
       : super(key: key);
 
   // https://firebase.flutter.dev/docs/firestore/usage#writing-data
@@ -22,7 +24,8 @@ class Skill extends StatefulWidget {
       : this(
             skillName: json['skillName']! as String,
             level: json['level']! as int,
-            experience: double.parse(json['experience'].toString()));
+            experience: double.parse(json['experience'].toString()),
+            category: json['category']! as String);
 
   Map<String, Object?> toJson() {
     return {'skillName': skillName, 'level': level, 'experience': experience};
