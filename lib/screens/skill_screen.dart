@@ -2,10 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:skilltree_app/widgets/widgets.dart';
 import 'package:skilltree_app/models/models.dart';
-// import 'package:skilltree_app/data/data.dart';
-
+import 'package:skilltree_app/res/custom_colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:skilltree_app/utils/authentication.dart';
 import 'package:skilltree_app/screens/screens.dart';
 
@@ -59,7 +57,7 @@ class _SkillScreenMobileState extends State<_SkillScreenMobile> {
           title: const Text(
             'Skill Tree',
             style: TextStyle(
-                color: Colors.grey,
+                color: Color(0xFF2C384A),
                 fontSize: 28.0,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -1.2),
